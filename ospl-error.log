@@ -1,0 +1,35 @@
+========================================================================================
+Report      : ERROR
+Date        : 2024-07-05T12:45:47+0500
+Description : Failed to checkout license feature 'OPENSPLICE_SPLICED'
+              Error initializing license system(-102) 'C:\Program Files\ADLINK\Vortex_v2\Device\VortexOpenSplice\6.10.4p2\HDE\x86_64.win64\etc\license.lic'
+              No license for product (-1) 'C:\Program Files\ADLINK\Vortex_v2\Device\VortexOpenSplice\6.10.4p2\HDE\x86_64.win64\\etc'
+              No license for product (-1) 'C:\Program Files\ADLINK\Vortex_v2\license'
+Node        : DESKTOP-0M4641P
+Process     : java.exe <21144>
+Thread      : spliced 6436
+Internals   : P838/6.10.4p2/0ff5e2b0ac/1b268cddad/Licensing/ospl_license.c/187/0/1720165547.559523500/-1
+========================================================================================
+Report      : FATAL
+Date        : 2024-07-05T12:45:47+0500
+Description : Cannot acquire license for feature OPENSPLICE_SPLICED. This service is not licensed & will exit.
+Node        : DESKTOP-0M4641P
+Process     : java.exe <21144>
+Thread      : spliced 6436
+Internals   : P838/6.10.4p2/0ff5e2b0ac/1b268cddad/service ospl_spliced/spliced.c/1398/0/1720165547.560319100/-1
+========================================================================================
+Context     : org.opensplice.dds.dcps.DomainParticipantFactoryImpl.create_participant
+Date        : 2024-07-05T12:45:55+0500
+Node        : DESKTOP-0M4641P
+Process     : java.exe <21144>
+Thread      : 16376
+Internals   : DomainParticipantFactoryImpl.java/175/P838/6.10.4p2/0ff5e2b0ac/1b268cddad/-1
+----------------------------------------------------------------------------------------
+Report      : Unable to connect to domain id = 0.
+              The most common causes of this error are an incorrect configuration file or
+              that OpenSpliceDDS is not running (when using shared memory mode).
+Internals   : u_participantNew/u_participant.c/239/773/1720165555.608084600
+----------------------------------------------------------------------------------------
+Report      : Failed to start Spliced for domain 'ospl_sp_ddsi' within 10 seconds, result = U_RESULT_OK
+
+Internals   : u_domain::startProcessDomain/u_domain.c/1310/769/1720165555.608094100

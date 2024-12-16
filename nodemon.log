@@ -1,0 +1,60 @@
+17:03:41 [main] INFO  nodemon - Ignoring domain id. Invalid format. Using default domain.
+17:03:41 [main] INFO  nodemon - OpenSplice Node Information Service is Running.
+17:03:41 [main] INFO  nodemon - Starting the node monitor.
+17:03:41 [NodeInfoService-akka.actor.default-dispatcher-3] INFO  nodemon - domain = 0
+17:03:41 [NodeInfoService-akka.actor.default-dispatcher-3] INFO  nodemon - partition = NODE_INFO
+17:03:41 [NodeInfoService-akka.actor.default-dispatcher-3] INFO  nodemon - historyDepth = 10
+17:03:41 [NodeInfoService-akka.actor.default-dispatcher-3] INFO  nodemon - interval.cpuInfo = 60000
+17:03:41 [NodeInfoService-akka.actor.default-dispatcher-3] INFO  nodemon - interval.cpuStats = 2000
+17:03:41 [NodeInfoService-akka.actor.default-dispatcher-3] INFO  nodemon - interval.memStats = 2000
+17:03:41 [NodeInfoService-akka.actor.default-dispatcher-3] INFO  nodemon - interval.netInfo = 60000
+17:03:41 [NodeInfoService-akka.actor.default-dispatcher-3] INFO  nodemon - interval.netInterfaceInfo = 60000
+17:03:41 [NodeInfoService-akka.actor.default-dispatcher-3] INFO  nodemon - interval.netInterfaceStats = 2000
+17:03:41 [NodeInfoService-akka.actor.default-dispatcher-3] INFO  nodemon - interval.operatingSystemInfo = 60000
+17:03:41 [NodeInfoService-akka.actor.default-dispatcher-3] INFO  nodemon - interval.processCPUStats = 2000
+17:03:41 [NodeInfoService-akka.actor.default-dispatcher-3] INFO  nodemon - interval.processMemoryStats = 2000
+17:03:41 [NodeInfoService-akka.actor.default-dispatcher-3] INFO  nodemon - interval.processInfo = 60000
+17:03:41 [NodeInfoService-akka.actor.default-dispatcher-3] INFO  nodemon - hostname = 
+17:03:41 [NodeInfoService-akka.actor.default-dispatcher-3] INFO  nodemon - AppActor - Using domain 0
+17:03:41 [NodeInfoService-akka.actor.default-dispatcher-3] INFO  nodemon - AppActor - Using hostname DESKTOP-0M4641P
+17:03:44 [Thread-0] INFO  nodemon - OpenSplice Node Information Service is shutting down.
+12:45:21 [main] INFO  nodemon - Ignoring domain id. Invalid format. Using default domain.
+12:45:21 [main] INFO  nodemon - OpenSplice Node Information Service is Running.
+12:45:21 [main] INFO  nodemon - Starting the node monitor.
+12:45:21 [NodeInfoService-akka.actor.default-dispatcher-3] INFO  nodemon - domain = 0
+12:45:21 [NodeInfoService-akka.actor.default-dispatcher-3] INFO  nodemon - partition = NODE_INFO
+12:45:21 [NodeInfoService-akka.actor.default-dispatcher-3] INFO  nodemon - historyDepth = 10
+12:45:21 [NodeInfoService-akka.actor.default-dispatcher-3] INFO  nodemon - interval.cpuInfo = 60000
+12:45:21 [NodeInfoService-akka.actor.default-dispatcher-3] INFO  nodemon - interval.cpuStats = 2000
+12:45:21 [NodeInfoService-akka.actor.default-dispatcher-3] INFO  nodemon - interval.memStats = 2000
+12:45:21 [NodeInfoService-akka.actor.default-dispatcher-3] INFO  nodemon - interval.netInfo = 60000
+12:45:21 [NodeInfoService-akka.actor.default-dispatcher-3] INFO  nodemon - interval.netInterfaceInfo = 60000
+12:45:21 [NodeInfoService-akka.actor.default-dispatcher-3] INFO  nodemon - interval.netInterfaceStats = 2000
+12:45:21 [NodeInfoService-akka.actor.default-dispatcher-3] INFO  nodemon - interval.operatingSystemInfo = 60000
+12:45:21 [NodeInfoService-akka.actor.default-dispatcher-3] INFO  nodemon - interval.processCPUStats = 2000
+12:45:21 [NodeInfoService-akka.actor.default-dispatcher-3] INFO  nodemon - interval.processMemoryStats = 2000
+12:45:21 [NodeInfoService-akka.actor.default-dispatcher-3] INFO  nodemon - interval.processInfo = 60000
+12:45:21 [NodeInfoService-akka.actor.default-dispatcher-3] INFO  nodemon - hostname = 
+12:45:21 [NodeInfoService-akka.actor.default-dispatcher-3] INFO  nodemon - AppActor - Using domain 0
+12:45:21 [NodeInfoService-akka.actor.default-dispatcher-3] INFO  nodemon - AppActor - Using hostname DESKTOP-0M4641P
+12:45:23 [Thread-0] INFO  nodemon - OpenSplice Node Information Service is shutting down.
+12:45:43 [main] INFO  nodemon - Ignoring domain id. Invalid format. Using default domain.
+12:45:43 [main] INFO  nodemon - OpenSplice Node Information Service is Running.
+12:45:43 [main] INFO  nodemon - Starting the node monitor.
+12:45:43 [NodeInfoService-akka.actor.default-dispatcher-4] INFO  nodemon - domain = 0
+12:45:43 [NodeInfoService-akka.actor.default-dispatcher-4] INFO  nodemon - partition = NODE_INFO
+12:45:43 [NodeInfoService-akka.actor.default-dispatcher-4] INFO  nodemon - historyDepth = 10
+12:45:43 [NodeInfoService-akka.actor.default-dispatcher-4] INFO  nodemon - interval.cpuInfo = 60000
+12:45:43 [NodeInfoService-akka.actor.default-dispatcher-4] INFO  nodemon - interval.cpuStats = 2000
+12:45:43 [NodeInfoService-akka.actor.default-dispatcher-4] INFO  nodemon - interval.memStats = 2000
+12:45:43 [NodeInfoService-akka.actor.default-dispatcher-4] INFO  nodemon - interval.netInfo = 60000
+12:45:43 [NodeInfoService-akka.actor.default-dispatcher-4] INFO  nodemon - interval.netInterfaceInfo = 60000
+12:45:43 [NodeInfoService-akka.actor.default-dispatcher-4] INFO  nodemon - interval.netInterfaceStats = 2000
+12:45:43 [NodeInfoService-akka.actor.default-dispatcher-4] INFO  nodemon - interval.operatingSystemInfo = 60000
+12:45:43 [NodeInfoService-akka.actor.default-dispatcher-4] INFO  nodemon - interval.processCPUStats = 2000
+12:45:43 [NodeInfoService-akka.actor.default-dispatcher-4] INFO  nodemon - interval.processMemoryStats = 2000
+12:45:43 [NodeInfoService-akka.actor.default-dispatcher-4] INFO  nodemon - interval.processInfo = 60000
+12:45:43 [NodeInfoService-akka.actor.default-dispatcher-4] INFO  nodemon - hostname = 
+12:45:43 [NodeInfoService-akka.actor.default-dispatcher-4] INFO  nodemon - AppActor - Using domain 0
+12:45:43 [NodeInfoService-akka.actor.default-dispatcher-4] INFO  nodemon - AppActor - Using hostname DESKTOP-0M4641P
+12:49:21 [Thread-0] INFO  nodemon - OpenSplice Node Information Service is shutting down.
