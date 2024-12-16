@@ -7,7 +7,9 @@ const Deal = require('../models/Deal');
 const AvailedDeal = require('../models/AvailedDeal');
 const Post = require('../models/Posts');
 const CV = require('../models/CV'); 
+const Feedback = require('../models/Feedback')
 const Notification = require('../models/Notification'); 
+const Recommendation = require('../models/Recommendation'); 
 const router = express.Router();
 const bcrypt = require("bcryptjs");
 const fetchuser = require('../middleware/fetchuser');
@@ -984,4 +986,73 @@ router.get('/getAllStudent',   async (req, res) => {
   }
 })
  
+//get All Student details
+router.get('/recommendations/:studentName', async (req, res) => {
+  const { studentName } = req.params;
+
+  try {
+    const recommendations = await Recommendation.find({ student_name: studentName }).exec();
+
+    if (!recommendations || recommendations.length === 0) {
+      return res.status(404).json({ message: `No recommendations found for student: ${studentName}` });
+    }
+
+    res.status(200).json(recommendations);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: 'Error retrieving recommendations', error: error.message });
+  }
+});
+
+
+
+//Feedback form
+
+router.post("/feedback", async (req, res) => {
+  try {
+    const { rating, comments, name, email, date } = req.body;
+    const newFeedback = new Feedback({
+      rating,
+      comments,
+      name,
+      email,
+      date,
+    });
+    await newFeedback.save();
+    res.status(200).json({ message: "Feedback submitted successfully" });
+  } catch (error) {
+    res.status(500).json({ message: "Error submitting feedback" });
+  }
+});
+
+
+router.get("/feedbacks", async (req, res) => {
+  try {
+    const feedbacks = await Feedback.find().sort({ createdAt: -1 }); // Most recent first
+    res.status(200).json(feedbacks);
+  } catch (error) {
+    res.status(500).json({ message: "Error fetching feedbacks" });
+  }
+});
+router.delete('/feedback/:id', async (req, res) => {
+  try {
+      const { id } = req.params;
+
+
+
+      // Delete the feedback by ID
+      const deletedFeedback = await Feedback.findByIdAndDelete(id);
+
+      // Check if feedback exists and was deleted
+      if (!deletedFeedback) {
+          return res.status(404).json({ message: 'Feedback not found.' });
+      }
+
+      // Respond with success message
+      res.status(200).json({ message: 'Feedback deleted successfully.' });
+  } catch (error) {
+      console.error('Error deleting feedback:', error);
+      res.status(500).json({ message: 'Internal server error.' });
+  }
+});
   module.exports = router;
