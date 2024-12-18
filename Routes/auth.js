@@ -956,6 +956,53 @@ router.patch('/notifications/:id', async (req, res) => {
     }
   });
 
+  router.put('/posts/:id', fetchuser, async (req, res) => {
+    try {
+        const { id } = req.params;
+        const { title, description } = req.body;
+
+        const post = await Post.findById(id);
+        if (!post) {
+            return res.status(404).json({ error: 'Post not found' });
+        }
+
+        if (post.user.toString() !== req.user.id) {
+            return res.status(403).json({ error: 'Unauthorized' });
+        }
+
+        post.title = title || post.title;
+        post.description = description || post.description;
+
+        const updatedPost = await post.save();
+        res.json({ success: true, post: updatedPost });
+    } catch (error) {
+        console.error('Error updating post:', error.message);
+        res.status(500).json({ error: 'Server Error' });
+    }
+});
+router.delete('/posts/:id', fetchuser, async (req, res) => {
+  try {
+      const { id } = req.params;
+
+      const post = await Post.findByIdAndDelete(req.params.id);
+      if (!post) {
+          return res.status(404).json({ error: 'Post not found' });
+      }
+
+      if (post.user.toString() !== req.user.id) {
+          return res.status(403).json({ error: 'Unauthorized' });
+      }
+
+     
+      res.json({ success: true, message: 'Post deleted successfully' });
+  } catch (error) {
+      console.error('Error deleting post:', error.message);
+      res.status(500).json({ error: 'Server Error' });
+  }
+});
+
+
+
 
 //get All Vendor details
 router.get('/getAllVendor',   async (req, res) => {
