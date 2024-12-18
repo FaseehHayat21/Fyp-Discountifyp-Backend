@@ -1,6 +1,9 @@
 const express = require("express");
 const bcrypt = require("bcryptjs");
 const Student = require("../models/Student");
+const StudentProfile = require("../models/StudentProfile");
+const VendorProfile = require("../models/VendorProfile");
+const Feedback = require("../models/Feedback");
 const Vendor = require("../models/Vendor");
 const jwt = require("jsonwebtoken");
 const Admin = require("../models/Admin"); // Or use the User model if you added the role there
@@ -24,7 +27,6 @@ const checkIfAdmin = (req) => {
 router.post(
     "/register",
     [
-      body("name").notEmpty().withMessage("Name is required."),
       body("email").isEmail().withMessage("Please enter a valid email."),
       body("password").isLength({ min: 6 }).withMessage("Password must be at least 6 characters long."),
     ],
@@ -32,7 +34,7 @@ router.post(
       const errors = validationResult(req);
       if (!errors.isEmpty()) return res.status(400).json({ errors: errors.array() });
   
-      const { name, email, password } = req.body;
+      const {email, password } = req.body;
   
       try {
         // Check if admin already exists
@@ -45,7 +47,6 @@ router.post(
   
         // Create new admin
         admin = new Admin({
-          name,
           email,
           password: hashedPassword,
         });
@@ -133,16 +134,38 @@ router.get("/users", async (req, res) => {
   
     try {
       let user;
+      let user2;
       if (userType === "Student") {
         user = await Student.findByIdAndDelete(id);
+        user2 = await StudentProfile.findByIdAndDelete(id);
       } else if (userType === "Vendor") {
         user = await Vendor.findByIdAndDelete(id);
+        user2 = await VendorProfile.findByIdAndDelete(id);
+
       } else {
         return res.status(400).json({ error: "Invalid user type specified." });
       }
   
       if (!user) return res.status(404).json({ error: "User not found" });
       res.json({ message: "User deleted successfully" });
+    } catch (error) {
+      console.error(error.message);
+      res.status(500).json({ error: "Server error" });
+    }
+  });
+  router.delete("/feedbacks/:id", async (req, res) => {
+    const { id } = req.params;
+   
+  
+  
+    try {
+      let feed;
+     
+      feed = await Feedback.findByIdAndDelete(id);
+    
+  
+      if (!feed) return res.status(404).json({ error: "Feedback not found" });
+      res.json({ message: "Feedback deleted successfully" });
     } catch (error) {
       console.error(error.message);
       res.status(500).json({ error: "Server error" });

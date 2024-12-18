@@ -1025,7 +1025,10 @@ router.get('/recommendations/:studentName', async (req, res) => {
   }
 });
 
-
+router.get('/studentprofiles', async (req, res) => {
+  const students = await StudentProfile.find({});
+  res.json(students);
+});
 
 //Feedback form
 
