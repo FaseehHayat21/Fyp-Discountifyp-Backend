@@ -682,6 +682,27 @@ const upload = multer({
       res.status(500).json({ error: 'Server error' });
     }
   });
+  router.patch('/deals/:id', upload.single('image'), async (req, res) => {
+    try {
+      const { title, description,originalPrice, discountPercentage, validUntil } = req.body;
+      const updatedFields = { title, description,originalPrice, discountPercentage, validUntil };
+  
+      // If an image is uploaded, add it to the updated fields
+      if (req.file) {
+        updatedFields.image = req.file.path;
+      }
+  
+      const updatedDeal = await Deal.findByIdAndUpdate(req.params.id, updatedFields, { new: true });
+  
+      if (!updatedDeal) {
+        return res.status(404).json({ error: 'Deal not found' });
+      }
+  
+      res.json({ message: 'Deal updated successfully', deal: updatedDeal });
+    } catch (error) {
+      res.status(500).json({ error: 'Server error', details: error.message });
+    }
+  });
   //AVAILED DEAL
   // router.post('/avail-deal', async (req, res) => {
   //   try {
