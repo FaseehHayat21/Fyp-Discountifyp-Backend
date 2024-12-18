@@ -703,33 +703,6 @@ const upload = multer({
       res.status(500).json({ error: 'Server error', details: error.message });
     }
   });
-  //AVAILED DEAL
-  // router.post('/avail-deal', async (req, res) => {
-  //   try {
-  //     const { studentId, dealId } = req.body;
-  
-  //     // Check if the student has already availed this deal
-  //     const alreadyAvailed = await AvailedDeal.findOne({ student: studentId, deal: dealId });
-  //     if (alreadyAvailed) {
-  //       return res.status(400).json({ message: 'You have already availed this deal.' });
-  //     }
-  
-  //     // Check if the deal is valid
-  //     const deal = await Deal.findById(dealId);
-  //     if (!deal) {
-  //       return res.status(404).json({ message: 'Deal not found.' });
-  //     }
-  
-  //     // Create a new availed deal record
-  //     const availedDeal = new AvailedDeal({ student: studentId, deal: dealId });
-  //     await availedDeal.save();
-  
-  //     return res.status(200).json({ message: 'Deal availed successfully.' });
-  //   } catch (error) {
-  //     return res.status(500).json({ message: 'An error occurred.', error: error.message });
-  //   }
-  // });
-// Update a deal with optional image upload
 router.post('/avail-deal', async (req, res) => {
   try {
     const { studentId, dealId } = req.body;
@@ -969,7 +942,7 @@ router.patch('/notifications/:id', async (req, res) => {
     }
   });
   // Route to get all posts (for a All student)
-  router.get('/posts', fetchuser, async (req, res) => {
+  router.get('/posts', async (req, res) => {
     try {
        
         const userId = req.user.id;
