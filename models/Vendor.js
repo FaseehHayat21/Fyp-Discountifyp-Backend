@@ -21,11 +21,7 @@ const VendorSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  address: {
-    type: String,
-    required: true,
-    trim: true,
-  },
+  
   city: {
     type: String,
     required: true,

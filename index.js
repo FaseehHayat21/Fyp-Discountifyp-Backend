@@ -81,3 +81,4 @@ mongoose.connect('mongodb://localhost:27017')
 app.use('/api/auth', require('./Routes/auth'));
 app.use('/api/vendor', require('./Routes/vendor'));
 app.use('/api/admin', require('./Routes/adminAuth'));
+app.use('/api/course', require('./Routes/course'));

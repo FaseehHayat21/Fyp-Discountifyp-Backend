@@ -153,6 +153,9 @@ router.get("/users", async (req, res) => {
       res.status(500).json({ error: "Server error" });
     }
   });
+
+
+  
   router.delete("/feedbacks/:id", async (req, res) => {
     const { id } = req.params;
    
@@ -172,6 +175,73 @@ router.get("/users", async (req, res) => {
     }
   });
   
+
+
+  // Analytics endpoint
+// router.get("/analytics", async (req, res) => {
+//   try {
+//     const totalStudents = await Student.countDocuments();
+//     const totalVendors = await Vendor.countDocuments();
+
+//     const studentsByLocation = await Student.aggregate([
+//       { $group: { _id: "$location", count: { $sum: 1 } } },
+//     ]);
+
+//     const vendorsByCategory = await Vendor.aggregate([
+//       { $group: { _id: "$category", count: { $sum: 1 } } },
+//     ]);
+
+//     const feedbackCount = await Feedback.countDocuments();
+
+//     const recentRegistrations = await Student.find({})
+//       .sort({ date: -1 })
+//       .limit(10); // Fetch 10 most recent registrations
+
+//     res.json({
+//       totalStudents,
+//       totalVendors,
+//       studentsByLocation,
+//       vendorsByCategory,
+//       feedbackCount,
+//       recentRegistrations,
+//     });
+//   } catch (error) {
+//     console.error(error.message);
+//     res.status(500).send("Server error");
+//   }
+// });
+router.get("/analytics", async (req, res) => {
+  try {
+    const totalStudents = await Student.countDocuments();
+    const totalVendors = await Vendor.countDocuments();
+
+    const studentsByLocation = await Student.aggregate([
+      { $group: { _id: "$location", count: { $sum: 1 } } },
+    ]);
+
+    const vendorsByCategory = await Vendor.aggregate([
+      { $group: { _id: "$category", count: { $sum: 1 } } },
+    ]);
+
+    const registrationTrends = await Student.aggregate([
+      { $group: { _id: { $month: "$date" }, count: { $sum: 1 } } },
+      { $sort: { "_id": 1 } },
+    ]);
+
+    res.json({
+      totalStudents,
+      totalVendors,
+      studentsByLocation,
+      vendorsByCategory,
+      registrationTrends,
+      feedbackCount: 25, // Replace with real feedback logic
+    });
+  } catch (error) {
+    console.error(error.message);
+    res.status(500).json({ error: "Server error" });
+  }
+});
+
   // Update a user's details (student or vendor)
 //   router.put("/user/:id", async (req, res) => {
     
