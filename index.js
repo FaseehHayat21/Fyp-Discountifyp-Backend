@@ -30,6 +30,7 @@ const cors = require('cors');
 const bodyParser = require('body-parser');
 const http = require('http');
 const socketIo = require('socket.io');
+const paymentRoutes = require('./Routes/payment');
 
 const app = express();
 const server = http.createServer(app); // Create HTTP server for Express and Socket.IO
@@ -62,6 +63,7 @@ app.use(express.json());
 app.use(bodyParser.json());
 app.use('/uploads', express.static('uploads'));
 
+
 // MongoDB Connection and Server Start
 mongoose.connect('mongodb://localhost:27017')
   .then(() => {
@@ -82,3 +84,4 @@ app.use('/api/auth', require('./Routes/auth'));
 app.use('/api/vendor', require('./Routes/vendor'));
 app.use('/api/admin', require('./Routes/adminAuth'));
 app.use('/api/course', require('./Routes/course'));
+app.use('/api/payment', paymentRoutes);

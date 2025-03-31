@@ -239,33 +239,37 @@ router.delete('/deleteCourse/:courseId', fetchuser, async (req, res) => {
 
 
 // POST /api/enroll/:courseId
+// POST /api/enroll/:courseId
 router.post('/enroll/:courseId', fetchuser, async (req, res) => {
   const studentId = req.user.id;
   const courseId = req.params.courseId;
-  console.log(courseId)
-
+  
   try {
+    const course = await Course.findById(courseId);
+    if (!course) return res.status(404).json({ success: false, error: 'Course not found' });
+    
     const alreadyEnrolled = await Enrollment.findOne({ student: studentId, course: courseId });
     if (alreadyEnrolled) {
-      return res.status(400).json({ error: 'Already enrolled in this course' });
+      return res.status(400).json({ success: false, error: 'Already enrolled in this course' });
     }
-
-    const course = await Course.findById(courseId);
-    if (!course) return res.status(404).json({ error: 'Course not found' });
-
-    const enrollment = new Enrollment({ student: studentId, course: courseId });
-    await enrollment.save();
-
-    // const notification = new Notification({
-    //   instructor: course.instructor,
-    //   message: `New student enrolled in your course: ${course.title}`,
-    // });
-    // await notification.save();
-
-    res.status(201).json({ message: 'Enrollment successful' });
+    
+    // For free courses, enroll directly
+    if (course.price === 0) {
+      const enrollment = new Enrollment({ student: studentId, course: courseId });
+      await enrollment.save();
+      return res.status(201).json({ success: true, message: 'Enrollment successful' });
+    }
+    
+    // For paid courses, redirect to payment
+    return res.status(200).json({ 
+      success: true, 
+      requiresPayment: true,
+      courseId: courseId,
+      price: course.price
+    });
   } catch (err) {
     console.error('Enrollment error:', err);
-    res.status(500).json({ error: 'Enrollment failed' });
+    res.status(500).json({ success: false, error: 'Enrollment failed' });
   }
 });
 
